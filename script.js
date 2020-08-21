@@ -24,6 +24,8 @@ var Password = {
         }
     },
 
+    // Functions for prompts and confirms
+
     // Function to prompt for password length and update length in Password Object
     lengthPrompt: function() {
         // Prompt user to enter length between 8 and 128
@@ -42,33 +44,78 @@ var Password = {
     lowerCaseConfirm: function() {
         this.lowerCase = confirm("Would you like lower case characters?");
         if (this.lowerCase === true) {
-            for (var i = 97; i < 122; i++) {
-                this.charSetArray.push(String.fromCharCode(i));
-            }
+            this.addLowerCaseChars();
         }
     },
 
-    // Upper case prompt and update num of charsets if true
+    // Upper case prompt and add char set to charSetArr
     upperCaseConfirm: function() {
         this.upperCase = confirm("Would you like upper case characters?");
         if (this.upperCase === true) {
-            this.numCharSets++;
+            this.addUpperCaseChars();
         }
     },
 
-    // Numeric characters prompt and update num of charsets if true
+    // Numeric characters prompt and add char set to charSetArr
     numericCharsConfirm: function() {
         this.numericChars = confirm("Would you like numeric characters?");
         if (this.numericChars === true) {
-            this.numCharSets++;
+            this.addNumericChars();
         }
     },
 
-    // Special characters prompt and update num of charsets if true
+    // Special characters prompt and add char set to charSetArr
     specialCharsConfirm: function() {
         this.specialChars = confirm("Would you like special characters?");
         if (this.specialChars === true) {
-            this.charSets++;
+            this.addSpecialChars();
+        }
+    },
+
+    // Functions to add the characters set to the character set array
+
+    // Function to add lower case characters to the character set array
+    addLowerCaseChars: function() {
+        // Unicode character numbers
+        var startLower = 97;
+        var endLower = 122;
+
+        // Add each lower case character to the Password character set
+        for (var i = startLower; i < endLower; i++) {
+            this.charSetArray.push(String.fromCharCode(i));
+        }
+    },
+
+    // Function to upper lower case characters to the character set array
+    addUpperCaseChars: function() {
+        // Unicode character numbers
+        var startUpper = 0;
+        var endUpper = 0;
+
+        for (var i = startUpper; i < endUpper; i++) {
+            this.charSetArray.push(String.fromCharCode(i));
+        }
+    },
+
+    // Function to numeric characters to the character set array
+    addNumericChars: function() {
+        // Unicode character numbers
+        var startNumeric = 0;
+        var endNumeric = 0;
+
+        for (var i = startNumeric; i < endNumeric; i++) {
+            this.charSetArray.push(String.fromCharCode(i));
+        }
+    },
+
+    // Function to special characters to the character set array
+    addSpecialChars: function() {
+        // Unicode character numbers
+        var startSpecial = 0;
+        var endSpecial = 0;
+
+        for (var i = startSpecial; i < endSpecial; i++) {
+            this.charSetArray.push(String.fromCharCode(i));
         }
     },
 };
