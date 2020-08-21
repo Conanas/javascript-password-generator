@@ -2,11 +2,19 @@
 var generateBtn = document.querySelector("#generate");
 
 var Password = {
+    // Length of Password
     length: 0,
+
+    // Char sets variables
     lowerCase: false,
     upperCase: false,
     numericChars: false,
     specialChars: false,
+
+    // Number of char sets sum
+    numCharSets: 0,
+
+    // Function to check if length of password is valid
     validLength: function() {
         if (this.length < 8 || this.length > 128) {
             return false;
@@ -14,37 +22,64 @@ var Password = {
             return true;
         }
     },
+
+    // Function to prompt for password length and update length in Password Object
     lengthPrompt: function() {
+        // Prompt user to enter length between 8 and 128
         this.length = prompt(
             "Choose length of password (Length must be between 8 and 128 characters long)"
         );
-        console.log(Password.length);
+
+        // Check if input is correct length, alert and prompt again if not
         if (this.validLength() === false) {
             alert("Password must be between 8 and 128 characters long");
             this.lengthPrompt();
         }
     },
+
+    // Lower case prompt and update num of charSets if true
     lowerCaseConfirm: function() {
         this.lowerCase = confirm("Would you like lower case characters?");
+        if (this.lowerCase === true) {
+            this.numCharSets++;
+        }
     },
+
+    // Upper case prompt and update num of charsets if true
     upperCaseConfirm: function() {
         this.upperCase = confirm("Would you like upper case characters?");
+        if (this.upperCase === true) {
+            this.numCharSets++;
+        }
     },
+
+    // Numeric characters prompt and update num of charsets if true
     numericCharsConfirm: function() {
         this.numericChars = confirm("Would you like numeric characters?");
+        if (this.numericChars === true) {
+            this.numCharSets++;
+        }
     },
+
+    // Special characters prompt and update num of charsets if true
     specialCharsConfirm: function() {
         this.specialChars = confirm("Would you like special characters?");
+        if (this.specialChars === true) {
+            this.charSets++;
+        }
     },
 };
 
+// Generate password function
 function generatePassword() {
+    // Random number variable declaration
+    var randomNum;
+
     // GIVEN I need a new, secure password
     // WHEN I click the button to generate a password
     // THEN I am presented with a series of prompts for password criteria
     // WHEN prompted for password criteria
     // THEN I select which criteria to include in the password
-
     // WHEN prompted for the length of the password
     // THEN I choose a length of at least 8 characters and no more than 128 characters
 
@@ -64,6 +99,12 @@ function generatePassword() {
 
     // WHEN all prompts are answered
     // THEN a password is generated that matches the selected criteria
+
+    // For each character of the password add a random characters based on the criteria
+    for (var i = 0; i < Password.length; i++) {
+        // Pick a charset
+        // Pick from that charset
+    }
 
     // WHEN the password is generated
     // THEN the password is either displayed in an alert or written to the page
