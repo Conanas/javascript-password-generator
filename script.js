@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Password object declaration
 var Password = {
     // Length of Password
     length: 0,
@@ -11,8 +12,8 @@ var Password = {
     numericChars: false,
     specialChars: false,
 
-    // Number of char sets sum
-    numCharSets: 0,
+    // Array for type sets
+    charSetArray: [],
 
     // Function to check if length of password is valid
     validLength: function() {
@@ -37,12 +38,10 @@ var Password = {
         }
     },
 
-    // Lower case prompt and update num of charSets if true
+    // Lower case prompt and add char set to charSetArr
     lowerCaseConfirm: function() {
         this.lowerCase = confirm("Would you like lower case characters?");
-        if (this.lowerCase === true) {
-            this.numCharSets++;
-        }
+        if (this.lowerCase === true) {}
     },
 
     // Upper case prompt and update num of charsets if true
@@ -75,30 +74,14 @@ function generatePassword() {
     // Random number variable declaration
     var randomNum;
 
-    // GIVEN I need a new, secure password
-    // WHEN I click the button to generate a password
-    // THEN I am presented with a series of prompts for password criteria
-    // WHEN prompted for password criteria
-    // THEN I select which criteria to include in the password
-    // WHEN prompted for the length of the password
-    // THEN I choose a length of at least 8 characters and no more than 128 characters
-
     // Prompt for length of password, length is checked and validated or prompted again
     Password.lengthPrompt();
-
-    // WHEN prompted for character types to include in the password
-    // THEN I choose lowercase, uppercase, numeric, and/or special characters
-    // WHEN I answer each prompt
-    // THEN my input should be validated and at least one character type should be selected
 
     // Confirm for all the different character types
     Password.lowerCaseConfirm();
     Password.upperCaseConfirm();
     Password.numericCharsConfirm();
     Password.specialCharsConfirm();
-
-    // WHEN all prompts are answered
-    // THEN a password is generated that matches the selected criteria
 
     // For each character of the password add a random characters based on the criteria
     for (var i = 0; i < Password.length; i++) {
