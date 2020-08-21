@@ -41,7 +41,11 @@ var Password = {
     // Lower case prompt and add char set to charSetArr
     lowerCaseConfirm: function() {
         this.lowerCase = confirm("Would you like lower case characters?");
-        if (this.lowerCase === true) {}
+        if (this.lowerCase === true) {
+            for (var i = 97; i < 122; i++) {
+                this.charSetArray.push(String.fromCharCode(i));
+            }
+        }
     },
 
     // Upper case prompt and update num of charsets if true
