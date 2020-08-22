@@ -5,6 +5,7 @@ var generateBtn = document.querySelector("#generate");
 var Password = {
     // Actual Password
     password: "",
+
     // Length of Password
     length: 0,
 
@@ -95,8 +96,10 @@ function generatePassword() {
     // Prompt for length of password, length is checked and validated or prompted again
     Password.lengthPrompt();
 
-    // Confirm for all the different character types
+    // Clears old password if generating another password
     Password.clearPassword();
+
+    // Confirm for all the different character types
     Password.lowerCaseConfirm();
     Password.upperCaseConfirm();
     Password.numericCharsConfirm();
