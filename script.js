@@ -9,6 +9,9 @@ var Password = {
     // Length of Password
     length: 0,
 
+    // Verified
+    verified: false,
+
     // Char sets variables
     lowerCase: false,
     upperCase: false,
@@ -88,13 +91,10 @@ var Password = {
         var hasNumeric = false;
         var hasSpecial = false;
 
-        // Declare boolean for verified
-        var verified = false;
-
         // Check if password has lower case characters
         if (this.lowerCase) {
             for (var i = 0; i < this.length; i++) {
-                if (this.lowerCaseArray.contains(this.password[i])) {
+                if (this.lowerCaseArray.includes(this.password[i])) {
                     hasLowerCase = true;
                     break;
                 }
@@ -104,7 +104,7 @@ var Password = {
         // Check if password has upper case characters
         if (this.upperCase) {
             for (var i = 0; i < this.length; i++) {
-                if (this.upperCaseArray.contains(this.password[i])) {
+                if (this.upperCaseArray.includes(this.password[i])) {
                     hasUpperCase = true;
                     break;
                 }
@@ -114,7 +114,7 @@ var Password = {
         // Check if password has numeric characters
         if (this.numericChars) {
             for (var i = 0; i < this.length; i++) {
-                if (this.numericArray.contains(this.password[i])) {
+                if (this.numericArray.includes(this.password[i])) {
                     hasNumeric = true;
                     break;
                 }
@@ -124,7 +124,7 @@ var Password = {
         // Check if password has special characters
         if (this.specialChars) {
             for (var i = 0; i < this.length; i++) {
-                if (this.SpecialArray.contains(this.password[i])) {
+                if (this.specialArray.includes(this.password[i])) {
                     hasSpecial = true;
                     break;
                 }
@@ -132,21 +132,27 @@ var Password = {
         }
 
         // Final check if password can be verified
-        if ((this.lowerCase && hasLowerCase) || (!this.lowerCase && !hasLowerCase) &&
-            (this.upperCase && hasUpperCase) || (!this.upperCase && !hasUpperCase) &&
-            (this.numericChars && hasNumeric) || (!this.numericChars && !hasNumeric) &&
-            (this.specialChars && hasSpecial) || (!this.specialChars && !hasSpecial)) {
-            verified = true;
+        if (((this.lowerCase && hasLowerCase) || (this.lowerCase === false && hasLowerCase === false)) &&
+            ((this.upperCase && hasUpperCase) || (this.upperCase === false && hasUpperCase === false)) &&
+            ((this.numericChars && hasNumeric) || (this.numericChars === false && hasNumeric === false)) &&
+            ((this.specialChars && hasSpecial) || (this.specialChars === false && hasSpecial === false))) {
+            this.verified = true;
+        } else {
+            this.verified = false;
         }
-
-        return verified;
 
     },
 
     // Clear password and charSetArray if new password is requested
     clearPassword: function() {
-        this.password = '';
+        this.password = "";
+        this.length = 0;
         this.charSetArray = [];
+        this.verified = false;
+        this.lowerCase = false;
+        this.upperCase = false;
+        this.numericChars = false;
+        this.specialChars = false;
     }
 };
 
@@ -169,17 +175,17 @@ function generatePassword() {
     Password.numericCharsConfirm();
     Password.specialCharsConfirm();
 
-    while ()
+    // While password is not verified then create password
+    while (Password.verified === false) {
 
-    // For each character of the password add a random characters based on the criteria
+        // For each character of the password add a random characters based on the criteria
         for (var i = 0; i < Password.length; i++) {
-        randomNum = Math.floor(Math.random() * Password.charSetArray.length);
-        newChar = Password.charSetArray[randomNum];
-        Password.password = Password.password.concat(newChar);
+            randomNum = Math.floor(Math.random() * Password.charSetArray.length);
+            newChar = Password.charSetArray[randomNum];
+            Password.password = Password.password.concat(newChar);
+        }
+        Password.verifyPassword();
     }
-
-    // Check if password has at least 1 of the requested character sets
-    Password.verifyPassword();
 
     // Return the new password to be written to the textArea
     return Password.password;
