@@ -19,7 +19,7 @@ var Password = {
     specialChars: false,
 
     // Has at least one character set
-    hasOneCharSet: false,
+    hasCharSet: false,
 
     // Arrays for char type sets
     charSetArray: [],
@@ -53,39 +53,41 @@ var Password = {
         }
     },
 
+    // Confirms for character sets
+
     // Lower case confirm and add lowerCaseArray to charSetArray
     lowerCaseConfirm: function() {
         this.lowerCase = confirm("Would you like lower case characters?");
-        this.hasOneCharSet = true;
         if (this.lowerCase === true) {
             this.charSetArray = this.charSetArray.concat(this.lowerCaseArray);
+            this.hasCharSet = true;
         }
     },
 
     // Upper case confirm and add upperCaseArray to charSetArray
     upperCaseConfirm: function() {
         this.upperCase = confirm("Would you like upper case characters?");
-        this.hasOneCharSet = true;
         if (this.upperCase === true) {
             this.charSetArray = this.charSetArray.concat(this.upperCaseArray);
+            this.hasCharSet = true;
         }
     },
 
     // Numeric characters confirm and add numericArray to charSetArray
     numericCharsConfirm: function() {
         this.numericChars = confirm("Would you like numeric characters?");
-        this.hasOneCharSet = true;
         if (this.numericChars === true) {
             this.charSetArray = this.charSetArray.concat(this.numericArray);
+            this.hasCharSet = true;
         }
     },
 
     // Special characters confirm and add specialArray to charSetArray
     specialCharsConfirm: function() {
         this.specialChars = confirm("Would you like special characters?");
-        this.hasOneCharSet = true;
         if (this.specialChars === true) {
             this.charSetArray = this.charSetArray.concat(this.specialArray);
+            this.hasCharSet = true;
         }
     },
 
@@ -157,7 +159,7 @@ var Password = {
         this.length = 0;
         this.charSetArray = [];
         this.verified = false;
-        this.hasOneCharSet = false;
+        this.hasCharSet = false;
         this.lowerCase = false;
         this.upperCase = false;
         this.numericChars = false;
@@ -178,12 +180,12 @@ function generatePassword() {
     // Prompt for length of password, length is checked and validated or prompted again
     Password.lengthPrompt();
 
-    while (Password.hasOneCharSet === false) {
+    while (Password.hasCharSet === false) {
         Password.lowerCaseConfirm();
         Password.upperCaseConfirm();
         Password.numericCharsConfirm();
         Password.specialCharsConfirm();
-        if (Password.hasOneCharSet === false) {
+        if (Password.hasCharSet === false) {
             alert("Password must have at least one character set");
         }
     }
