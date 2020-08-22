@@ -76,12 +76,19 @@ var Password = {
         if (this.specialChars === true) {
             this.charSetArray = this.charSetArray.concat(this.specialArray);
         }
+    },
+
+    // Clear password and charSetArray if new password is requested
+    clearPassword: function() {
+        this.password = '';
+        this.charSetArray = [];
     }
 };
 
 // Generate password function
 function generatePassword() {
 
+    // Declare variables for random number and new character
     var randomNum;
     var newChar;
 
@@ -89,6 +96,7 @@ function generatePassword() {
     Password.lengthPrompt();
 
     // Confirm for all the different character types
+    Password.clearPassword();
     Password.lowerCaseConfirm();
     Password.upperCaseConfirm();
     Password.numericCharsConfirm();
@@ -101,10 +109,8 @@ function generatePassword() {
         Password.password = Password.password.concat(newChar);
     }
 
-    // WHEN the password is generated
-    // THEN the password is either displayed in an alert or written to the page
-
-    console.log(Password.password);
+    // Return the new password to be written to the textArea
+    return Password.password;
 }
 
 // Write password to the #password input
