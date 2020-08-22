@@ -12,8 +12,12 @@ var Password = {
     numericChars: false,
     specialChars: false,
 
-    // Array for type sets
+    // Arrays for char type sets
     charSetArray: [],
+    lowerCaseArray: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+    upperCaseArray: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+    numericArray: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+    specialArray: ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'],
 
     // Function to check if length of password is valid
     validLength: function() {
@@ -70,54 +74,7 @@ var Password = {
         if (this.specialChars === true) {
             this.addSpecialChars();
         }
-    },
-
-    // Functions to add the characters set to the character set array
-
-    // Function to add lower case characters to the character set array
-    addLowerCaseChars: function() {
-        // Unicode character numbers
-        var startLower = 97;
-        var endLower = 122;
-
-        // Add each lower case character to the Password character set
-        for (var i = startLower; i < endLower; i++) {
-            this.charSetArray.push(String.fromCharCode(i));
-        }
-    },
-
-    // Function to upper lower case characters to the character set array
-    addUpperCaseChars: function() {
-        // Unicode character numbers
-        var startUpper = 0;
-        var endUpper = 0;
-
-        for (var i = startUpper; i < endUpper; i++) {
-            this.charSetArray.push(String.fromCharCode(i));
-        }
-    },
-
-    // Function to numeric characters to the character set array
-    addNumericChars: function() {
-        // Unicode character numbers
-        var startNumeric = 0;
-        var endNumeric = 0;
-
-        for (var i = startNumeric; i < endNumeric; i++) {
-            this.charSetArray.push(String.fromCharCode(i));
-        }
-    },
-
-    // Function to special characters to the character set array
-    addSpecialChars: function() {
-        // Unicode character numbers
-        var startSpecial = 0;
-        var endSpecial = 0;
-
-        for (var i = startSpecial; i < endSpecial; i++) {
-            this.charSetArray.push(String.fromCharCode(i));
-        }
-    },
+    }
 };
 
 // Generate password function
