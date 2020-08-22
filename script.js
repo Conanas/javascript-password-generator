@@ -3,6 +3,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Password object declaration
 var Password = {
+    // Actual Password
+    password: "",
     // Length of Password
     length: 0,
 
@@ -44,43 +46,44 @@ var Password = {
         }
     },
 
-    // Lower case prompt and add char set to charSetArr
+    // Lower case confirm and add lowerCaseArray to charSetArray
     lowerCaseConfirm: function() {
         this.lowerCase = confirm("Would you like lower case characters?");
         if (this.lowerCase === true) {
-            this.addLowerCaseChars();
+            this.charSetArray = this.charSetArray.concat(this.lowerCaseArray);
         }
     },
 
-    // Upper case prompt and add char set to charSetArr
+    // Upper case confirm and add upperCaseArray to charSetArray
     upperCaseConfirm: function() {
         this.upperCase = confirm("Would you like upper case characters?");
         if (this.upperCase === true) {
-            this.addUpperCaseChars();
+            this.charSetArray = this.charSetArray.concat(this.upperCaseArray);
         }
     },
 
-    // Numeric characters prompt and add char set to charSetArr
+    // Numeric characters confirm and add numericArray to charSetArray
     numericCharsConfirm: function() {
         this.numericChars = confirm("Would you like numeric characters?");
         if (this.numericChars === true) {
-            this.addNumericChars();
+            this.charSetArray = this.charSetArray.concat(this.numericArray);
         }
     },
 
-    // Special characters prompt and add char set to charSetArr
+    // Special characters confirm and add specialArray to charSetArray
     specialCharsConfirm: function() {
         this.specialChars = confirm("Would you like special characters?");
         if (this.specialChars === true) {
-            this.addSpecialChars();
+            this.charSetArray = this.charSetArray.concat(this.specialArray);
         }
     }
 };
 
 // Generate password function
 function generatePassword() {
-    // Random number variable declaration
+
     var randomNum;
+    var newChar;
 
     // Prompt for length of password, length is checked and validated or prompted again
     Password.lengthPrompt();
@@ -93,12 +96,15 @@ function generatePassword() {
 
     // For each character of the password add a random characters based on the criteria
     for (var i = 0; i < Password.length; i++) {
-        // Pick a charset
-        // Pick from that charset
+        randomNum = Math.floor(Math.random() * Password.charSetArray.length);
+        newChar = Password.charSetArray[randomNum];
+        Password.password = Password.password.concat(newChar);
     }
 
     // WHEN the password is generated
     // THEN the password is either displayed in an alert or written to the page
+
+    console.log(Password.password);
 }
 
 // Write password to the #password input
