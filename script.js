@@ -82,6 +82,65 @@ var Password = {
     // Verifies if the password has at least from each of the character sets
     verifyPassword: function() {
 
+        // Declare boolean variables for verify function
+        var hasLowerCase = false;
+        var hasUpperCase = false;
+        var hasNumeric = false;
+        var hasSpecial = false;
+
+        // Declare boolean for verified
+        var verified = false;
+
+        // Check if password has lower case characters
+        if (this.lowerCase) {
+            for (var i = 0; i < this.length; i++) {
+                if (this.lowerCaseArray.contains(this.password[i])) {
+                    hasLowerCase = true;
+                    break;
+                }
+            }
+        }
+
+        // Check if password has upper case characters
+        if (this.upperCase) {
+            for (var i = 0; i < this.length; i++) {
+                if (this.upperCaseArray.contains(this.password[i])) {
+                    hasUpperCase = true;
+                    break;
+                }
+            }
+        }
+
+        // Check if password has numeric characters
+        if (this.numericChars) {
+            for (var i = 0; i < this.length; i++) {
+                if (this.numericArray.contains(this.password[i])) {
+                    hasNumeric = true;
+                    break;
+                }
+            }
+        }
+
+        // Check if password has special characters
+        if (this.specialChars) {
+            for (var i = 0; i < this.length; i++) {
+                if (this.SpecialArray.contains(this.password[i])) {
+                    hasSpecial = true;
+                    break;
+                }
+            }
+        }
+
+        // Final check if password can be verified
+        if ((this.lowerCase && hasLowerCase) || (!this.lowerCase && !hasLowerCase) &&
+            (this.upperCase && hasUpperCase) || (!this.upperCase && !hasUpperCase) &&
+            (this.numericChars && hasNumeric) || (!this.numericChars && !hasNumeric) &&
+            (this.specialChars && hasSpecial) || (!this.specialChars && !hasSpecial)) {
+            verified = true;
+        }
+
+        return verified;
+
     },
 
     // Clear password and charSetArray if new password is requested
@@ -110,8 +169,10 @@ function generatePassword() {
     Password.numericCharsConfirm();
     Password.specialCharsConfirm();
 
+    while ()
+
     // For each character of the password add a random characters based on the criteria
-    for (var i = 0; i < Password.length; i++) {
+        for (var i = 0; i < Password.length; i++) {
         randomNum = Math.floor(Math.random() * Password.charSetArray.length);
         newChar = Password.charSetArray[randomNum];
         Password.password = Password.password.concat(newChar);
