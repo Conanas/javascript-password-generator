@@ -131,7 +131,7 @@ var Password = {
             }
         }
 
-        // Final check if password can be verified
+        // Final check if password can be verified if not verified then clear password
         if (((this.lowerCase && hasLowerCase) || (this.lowerCase === false && hasLowerCase === false)) &&
             ((this.upperCase && hasUpperCase) || (this.upperCase === false && hasUpperCase === false)) &&
             ((this.numericChars && hasNumeric) || (this.numericChars === false && hasNumeric === false)) &&
@@ -139,6 +139,7 @@ var Password = {
             this.verified = true;
         } else {
             this.verified = false;
+            this.password = "";
         }
 
     },
@@ -160,14 +161,14 @@ var Password = {
 function generatePassword() {
 
     // Declare variables for random number and new character
-    var randomNum;
-    var newChar;
-
-    // Prompt for length of password, length is checked and validated or prompted again
-    Password.lengthPrompt();
+    var randomNum = 0;
+    var newChar = '';
 
     // Clears old password if generating another password
     Password.clearPassword();
+
+    // Prompt for length of password, length is checked and validated or prompted again
+    Password.lengthPrompt();
 
     // Confirm for all the different character types
     Password.lowerCaseConfirm();
@@ -175,9 +176,11 @@ function generatePassword() {
     Password.numericCharsConfirm();
     Password.specialCharsConfirm();
 
+    // Check if user has inputted at least 1 character set
+
+
     // While password is not verified then create password
     while (Password.verified === false) {
-
         // For each character of the password add a random characters based on the criteria
         for (var i = 0; i < Password.length; i++) {
             randomNum = Math.floor(Math.random() * Password.charSetArray.length);
