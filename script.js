@@ -79,6 +79,11 @@ var Password = {
         }
     },
 
+    // Verifies if the password has at least from each of the character sets
+    verifyPassword: function() {
+
+    },
+
     // Clear password and charSetArray if new password is requested
     clearPassword: function() {
         this.password = '';
@@ -111,6 +116,9 @@ function generatePassword() {
         newChar = Password.charSetArray[randomNum];
         Password.password = Password.password.concat(newChar);
     }
+
+    // Check if password has at least 1 of the requested character sets
+    Password.verifyPassword();
 
     // Return the new password to be written to the textArea
     return Password.password;
