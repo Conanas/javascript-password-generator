@@ -10,16 +10,16 @@ https://conanas.github.io/javascript-password-generator/
 
 ##### Welcome Screen
 
-![Welcome Screen](screenshots\password-generator-welcome-screen.png "Welcome Screen")
+![Welcome Screen](./screenshots./password-generator-welcome-screen.png "Welcome Screen")
 
 ##### All Characters
 
-![All Characters](screenshots\password-generator-all-characters.png "All Characters")
+![All Characters](./screenshots/password-generator-all-characters.png "All Characters")
 
 ##### Lower Case
 
-![Lower Case](screenshots\password-generator-lower-case.png "Lower Case")
+![Lower Case](./screenshots/password-generator-lower-case.png "Lower Case")
 
 ##### Special Characters
 
-![Special Characters](screenshots\password-generator-special-characters.png "Special Characters")
+![Special Characters](./screenshots/password-generator-special-characters.png "Special Characters")
