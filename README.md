@@ -10,7 +10,7 @@ https://conanas.github.io/javascript-password-generator/
 
 ##### Welcome Screen
 
-![Welcome Screen](./screenshots./password-generator-welcome-screen.png "Welcome Screen")
+![Welcome Screen](./screenshots/password-generator-welcome-screen.png "Welcome Screen")
 
 ##### All Characters
 
